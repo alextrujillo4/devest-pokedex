@@ -17,7 +17,7 @@ dependencies:
   dartz: ^0.10.1
 
   failure:
-    path: ../../utils/failure
+    path: ../../common/failure
 
 dev_dependencies:
   flutter_test:
