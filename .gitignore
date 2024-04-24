@@ -19,6 +19,7 @@
 
 
 *.g.dart
+*.metadata
 *.env
 */.env
 */.lock
