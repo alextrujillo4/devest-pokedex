@@ -1,3 +1,4 @@
+
 import 'package:pokemon/src/domain/entity/pokemon.dart';
 
 Pokemon mockPokemon() {
