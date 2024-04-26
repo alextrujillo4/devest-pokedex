@@ -26,7 +26,7 @@ void main() {
       datasource = PokedexRemoteDataSourceImpl(http: mockHttp);
     });
 
-    test('should return a Movie when JSON parsing is successful', () async {
+    test('should return a Pokemon when JSON parsing is successful', () async {
       final successResponse =
           await File('$mockDir/pokedex.json').readAsString();
 
