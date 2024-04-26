@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ErrorWidget extends StatelessWidget {
+class ProblemWidget extends StatelessWidget {
   final String title;
   final String message;
   final VoidCallback onTap;
 
-  const ErrorWidget({
+  const ProblemWidget({
     super.key,
     required this.title,
     required this.message,
