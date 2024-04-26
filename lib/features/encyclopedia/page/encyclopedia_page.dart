@@ -54,7 +54,7 @@ class EncyclopediaPage extends StatelessWidget {
       itemCount: pokemons.length,
       itemBuilder: (context, index) {
         final pokemon = pokemons[index];
-        return PokemonEntryPage(
+        return PokemonElementWidget(
           pokemon: pokemon,
           position: index + 1,
         );

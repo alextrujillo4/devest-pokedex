@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_pokedex/common/constants/extensions.dart';
 import 'package:pokedex/pokedex_package.dart';
 
-class PokemonEntryPage extends StatelessWidget {
-  const PokemonEntryPage({
+class PokemonElementWidget extends StatelessWidget {
+  const PokemonElementWidget({
     super.key,
     required this.pokemon,
     required this.position,
