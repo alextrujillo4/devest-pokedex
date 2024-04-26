@@ -28,7 +28,7 @@ void main() {
 
     test('should return a Pokemon when JSON parsing is successful', () async {
       final successResponse =
-          await File('$mockDir/pokedex.json').readAsString();
+          await File('$mockDir/encyclopedia.json').readAsString();
 
       when(mockHttp.requestGet(path: url))
           .thenAnswer((_) async => http.Response(

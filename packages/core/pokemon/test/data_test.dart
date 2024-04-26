@@ -29,14 +29,14 @@ void main() {
 
     test('should return a Pokemon when JSON parsing is successful', () async {
       const pokemonId = 151;
-      final successResponse = await File('$mockDir/pokemon.json').readAsString();
+      final successResponse = await File('$mockDir/detail.json').readAsString();
 
-      when(mockHttp.requestGet(path: "/pokemon/$pokemonId"))
+      when(mockHttp.requestGet(path: "/detail/$pokemonId"))
           .thenAnswer((_) async => http.Response(successResponse, 200));
 
       final result = await datasource.requestPokemonDetail(pokemonId);
 
-      verify(mockHttp.requestGet(path: "/pokemon/$pokemonId")).called(1);
+      verify(mockHttp.requestGet(path: "/detail/$pokemonId")).called(1);
 
       expect(result, isA<Pokemon>());
       expect(result.id, 151);
@@ -48,7 +48,7 @@ void main() {
       final wrongResonse =
           await File('$mockDir/pokemon_wrong.json').readAsString();
 
-      when(mockHttp.requestGet(path: "/pokemon/$pokemonId"))
+      when(mockHttp.requestGet(path: "/detail/$pokemonId"))
           .thenAnswer((_) async => http.Response(wrongResonse, 200));
 
       try {

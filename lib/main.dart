@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/common/constants/app_strings.dart';
 import 'package:flutter_pokedex/common/constants/theme.dart';
-import 'package:flutter_pokedex/home_screen.dart';
 import 'package:network/di.dart' as network;
 import 'package:pokedex/di.dart' as pokedex;
 import 'package:pokemon/di.dart' as pokemon;
 import 'package:storage/di.dart' as storage;
 
 import 'di.dart';
+import 'features/encyclopedia/page/encyclopedia_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,11 +17,11 @@ Future<void> main() async {
   await pokemon.init();
   await pokedex.init();
   await init();
-  runApp(const Pokedex());
+  runApp(const PokedexApp());
 }
 
-class Pokedex extends StatelessWidget {
-  const Pokedex({super.key});
+class PokedexApp extends StatelessWidget {
+  const PokedexApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class Pokedex extends StatelessWidget {
       theme: appTheme,
       home: MultiBlocProvider(
         providers: const [],
-        child: const HomeScreen(),
+        child: const EncyclopediaPage(),
       ),
     );
   }

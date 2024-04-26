@@ -16,7 +16,7 @@ class PokemonRemoteDatasourceImpl implements PokemonRemoteDatasource {
   @override
   Future<IPokemon> requestPokemonDetail(int pokemonId) async {
     final call = await http.requestGet(
-      path: "/pokemon/$pokemonId",
+      path: "/detail/$pokemonId",
     );
 
     final data = json.decode(call.body);

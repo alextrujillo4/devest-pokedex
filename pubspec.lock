@@ -560,14 +560,14 @@ packages:
   pokedex:
     dependency: "direct main"
     description:
-      path: "packages/core/pokedex"
+      path: "packages/core/encyclopedia"
       relative: true
     source: path
     version: "0.0.1"
   pokemon:
     dependency: "direct main"
     description:
-      path: "packages/core/pokemon"
+      path: "packages/core/detail"
       relative: true
     source: path
     version: "0.0.1"

@@ -35,7 +35,7 @@ void main() {
     mockErrorPokemonRepository = MockErrorPokemonRepository();
   });
 
-  test('AddFavoriteUseCase should add a pokemon to favorites successfully',
+  test('AddFavoriteUseCase should add a detail to favorites successfully',
       () async {
     useCase = AddFavoriteUseCase(mockRepository);
     final pokemon = mockPokemon();
@@ -44,7 +44,7 @@ void main() {
     expect(result, isA<Right>());
   });
 
-  test('AddFavoriteUseCase should return a failure when adding pokemon fails',
+  test('AddFavoriteUseCase should return a failure when adding detail fails',
       () async {
     useCase = AddFavoriteUseCase(mockErrorPokemonRepository);
     final pokemon = mockPokemon();
