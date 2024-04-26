@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_pokedex/common/constants/extensions.dart';
 import 'package:pokedex/pokedex_package.dart';
 
-class PokemonElementWidget extends StatelessWidget {
-  const PokemonElementWidget({
+class PokemonItemWidget extends StatelessWidget {
+  const PokemonItemWidget({
     super.key,
     required this.pokemon,
     required this.position,
