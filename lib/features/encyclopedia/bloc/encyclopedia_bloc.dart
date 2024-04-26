@@ -21,8 +21,8 @@ class EncyclopediaBloc extends StateManagement {
       final failureOrSuccess = await _repository.getPokedexByRegion(params);
       return failureOrSuccess.fold(
           (failure) => emit(ERROR(failure: failure)),
-          (popularMovies) =>
-              emit(SUCCESS<IPokedex>(data: popularMovies)));
+          (data) =>
+              emit(SUCCESS<IPokedex>(data: data)));
     } catch (e, s) {
       final ex = EncyclopediaBlocFailure(message: "$e", stacktrace: s);
       emit(ERROR(failure: ex));

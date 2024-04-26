@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/common/widgets/loading_widget.dart';
 import 'package:flutter_pokedex/common/widgets/problem_widget.dart';
-import 'package:flutter_pokedex/features/encyclopedia/bloc/popular_movies_bloc.dart';
+import 'package:flutter_pokedex/features/encyclopedia/bloc/encyclopedia_bloc.dart';
 import 'package:pokedex/pokedex_package.dart';
 import 'package:state_manager/state_manager.dart';
 
