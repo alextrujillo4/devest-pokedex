@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/common/constants/app_strings.dart';
 import 'package:flutter_pokedex/common/constants/theme.dart';
-import 'package:flutter_pokedex/features/encyclopedia/bloc/popular_movies_bloc.dart';
+import 'package:flutter_pokedex/features/encyclopedia/bloc/encyclopedia_bloc.dart';
 import 'package:network/di.dart' as network;
 import 'package:pokedex/di.dart' as pokedex;
 import 'package:pokemon/di.dart' as pokemon;
