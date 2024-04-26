@@ -19,7 +19,7 @@ class PokedexRemoteDataSourceImpl implements PokedexRemoteDataSource {
   ) async {
 
     final call = await http.requestGet(
-      path: '$region'
+      path: 'pokedex/$region'
     );
 
     final data = json.decode(call.body);

@@ -1,7 +1,7 @@
 import 'package:state_manager/state_manager.dart';
 
-class RequestPokemonParam extends Params {
+class RequestParam extends Params {
   final int id;
 
-  RequestPokemonParam({required this.id});
+  RequestParam({required this.id});
 }
