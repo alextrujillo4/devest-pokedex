@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_pokedex/common/constants/app_strings.dart';
+import 'package:flutter_pokedex/common/constants/theme.dart';
 import 'package:flutter_pokedex/home_screen.dart';
 import 'package:network/di.dart' as network;
 import 'package:pokedex/di.dart' as pokedex;
@@ -24,11 +26,8 @@ class Pokedex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pokédex Code Challenge',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      title: AppStrings.appBarTitle,
+      theme: appTheme,
       home: MultiBlocProvider(
         providers: const [],
         child: const HomeScreen(),
