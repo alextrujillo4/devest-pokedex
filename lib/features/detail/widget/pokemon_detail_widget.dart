@@ -1,19 +1,24 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:d_chart/single_bar/view.dart';
+import 'package:flowery_tts/flowery_tts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pokedex/common/constants/app_colors.dart';
 import 'package:flutter_pokedex/common/constants/extensions.dart';
 import 'package:flutter_pokedex/common/widgets/capture_widget.dart';
+import 'package:flutter_pokedex/features/detail/widget/audio_icon_btn.dart';
 import 'package:flutter_pokedex/features/detail/widget/pokemon_foot_icons.dart';
 import 'package:flutter_pokedex/features/detail/widget/pokemon_info_card.dart';
 import 'package:flutter_pokedex/features/detail/widget/pokemon_type_icons.dart';
 import 'package:flutter_pokedex/features/detail/widget/section_title.dart';
 import 'package:pokemon/pokemon_package.dart';
 
+import '../../../di.dart';
+
 class PokemonDetailWidget extends StatelessWidget {
   final IPokemon pokemon;
 
-  const PokemonDetailWidget({
+  PokemonDetailWidget({
     super.key,
     required this.pokemon,
   });
@@ -22,7 +27,6 @@ class PokemonDetailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final primaryColor =
         AppColors.getPokemonColorType[pokemon.types.first.name];
-
     return Stack(
       children: [
         Container(color: Colors.black),
@@ -32,7 +36,20 @@ class PokemonDetailWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 24),
+              const SizedBox(height: 32),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white,
+                    ),
+                  ),
+                  AudioIconButton(flowery: sl(), player: sl(), description: pokemon.description)
+                ],
+              ),
               Center(
                 child: CachedNetworkImage(
                   width: 240,

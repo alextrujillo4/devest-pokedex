@@ -18,6 +18,8 @@ dependencies:
   provider: ^6.1.2
   flutter_svg: ^2.0.10+1
   d_chart: ^2.6.9
+  flowery_tts: ^1.1.0
+  audioplayers: ^6.0.0
 
   #DATA/DOMAIN
   pokemon:
