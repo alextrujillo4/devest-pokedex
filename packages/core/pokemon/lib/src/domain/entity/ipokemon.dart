@@ -3,6 +3,8 @@ abstract class IPokemon {
 
   String get name;
 
+  String get description;
+
   int get baseExperience;
 
   int get height;

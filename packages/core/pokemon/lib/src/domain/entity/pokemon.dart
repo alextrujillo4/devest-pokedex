@@ -22,6 +22,11 @@ class Pokemon implements IPokemon {
   @override
   final Picture picture;
 
+  @override
+  String get description {
+    return "The Pokémon $name is a ${types.map((e) => e.name )} type. It stands at $height decimetres tall and weighs $weight hectograms. And Base Experience of ${baseExperience}";
+  }
+
   Pokemon({
     required this.id,
     required this.name,
