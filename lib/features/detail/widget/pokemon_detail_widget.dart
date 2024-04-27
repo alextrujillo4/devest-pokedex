@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_pokedex/common/constants/app_colors.dart';
 import 'package:flutter_pokedex/common/constants/extensions.dart';
 import 'package:flutter_pokedex/common/widgets/capture_widget.dart';
-import 'package:flutter_pokedex/common/widgets/pokemon_foot_icons.dart';
-import 'package:flutter_pokedex/common/widgets/pokemon_info_card.dart';
-import 'package:flutter_pokedex/common/widgets/pokemon_type_icons.dart';
-import 'package:flutter_pokedex/common/widgets/section_title.dart';
+import 'package:flutter_pokedex/features/detail/widget/pokemon_foot_icons.dart';
+import 'package:flutter_pokedex/features/detail/widget/pokemon_info_card.dart';
+import 'package:flutter_pokedex/features/detail/widget/pokemon_type_icons.dart';
+import 'package:flutter_pokedex/features/detail/widget/section_title.dart';
 import 'package:pokemon/pokemon_package.dart';
 
 class PokemonDetailWidget extends StatelessWidget {

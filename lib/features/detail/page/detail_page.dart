@@ -28,7 +28,6 @@ class DetailPage extends StatelessWidget {
       },
       child: Scaffold(
         key: const Key("detail_page"),
-        appBar: AppBar(),
         body: BlocProvider(
           create: (_) => _bloc,
           child: BlocBuilder<PokemonDetailBloc, RequestState>(
