@@ -7,6 +7,7 @@ import 'package:flutter_pokedex/features/captured/bloc/captured_bloc.dart';
 import 'package:flutter_pokedex/features/encyclopedia/bloc/encyclopedia_bloc.dart';
 import 'package:network/di.dart' as network;
 import 'package:pokedex/di.dart' as pokedex;
+import 'package:pokedex/pokedex_package.dart';
 import 'package:pokemon/di.dart' as pokemon;
 import 'package:pokemon/pokemon_package.dart';
 import 'package:provider/provider.dart';
@@ -35,8 +36,13 @@ class PokedexApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => sl<SettingsProvider>()),
         BlocProvider(
-            create: (_) =>
-                sl<EncyclopediaBloc>()..add(Invoke(params: "kanto"))),
+          create: (_) => sl<EncyclopediaBloc>()
+            ..add(
+              Invoke(
+                params: RequestAllParam(region: "kanto"),
+              ),
+            ),
+        ),
         BlocProvider(
             create: (_) =>
                 sl<CapturedBloc>()..add(Invoke(params: const NoParams()))),
@@ -47,7 +53,8 @@ class PokedexApp extends StatelessWidget {
             sl<SettingsProvider>().evaluatePokedexColor(state.data);
           }
         },
-        child: Consumer<SettingsProvider>(builder: (context, settingsProvider, _) {
+        child:
+            Consumer<SettingsProvider>(builder: (context, settingsProvider, _) {
           return MaterialApp.router(
             title: AppStrings.appBarTitle,
             routerConfig: appRouter,

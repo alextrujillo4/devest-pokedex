@@ -16,7 +16,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => AudioPlayer());
 
   sl.registerFactory<EncyclopediaBloc>(
-      () => EncyclopediaBloc(repository: sl()));
+      () => EncyclopediaBloc(usecase: sl()));
 
   sl.registerFactory<CapturedBloc>(() => CapturedBloc(repository: sl()));
 

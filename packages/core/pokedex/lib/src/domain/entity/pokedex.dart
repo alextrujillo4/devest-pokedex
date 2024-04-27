@@ -1,11 +1,18 @@
 abstract class IPokedex {
   List<IDescription> get descriptions;
+
   int get id;
+
   bool get isMainSeries;
+
   String get name;
+
   List<IName> get names;
+
   List<IPokemonEntry> get pokemonEntries;
+
   IRegion get region;
+
   List<IVersionGroup> get versionGroups;
 }
 
@@ -41,6 +48,7 @@ class Pokedex implements IPokedex {
 
 abstract class IDescription {
   String get description;
+
   ILanguage get language;
 }
 
@@ -55,6 +63,7 @@ class Description implements IDescription {
 
 abstract class ILanguage {
   String get name;
+
   String get url;
 }
 
@@ -69,6 +78,7 @@ class Language implements ILanguage {
 
 abstract class IName {
   ILanguage get language;
+
   String get name;
 }
 
@@ -83,7 +93,14 @@ class Name implements IName {
 
 abstract class IPokemonEntry {
   int get entryNumber;
+
   IPokemonSpecies get pokemonSpecies;
+}
+
+abstract class IPokemonSpecies {
+  String get name;
+
+  String get url;
 }
 
 class PokemonEntry implements IPokemonEntry {
@@ -93,11 +110,6 @@ class PokemonEntry implements IPokemonEntry {
   final PokemonSpecies pokemonSpecies;
 
   PokemonEntry({required this.entryNumber, required this.pokemonSpecies});
-}
-
-abstract class IPokemonSpecies {
-  String get name;
-  String get url;
 }
 
 class PokemonSpecies implements IPokemonSpecies {
@@ -111,6 +123,7 @@ class PokemonSpecies implements IPokemonSpecies {
 
 abstract class IRegion {
   String get name;
+
   String get url;
 }
 
@@ -125,6 +138,7 @@ class Region implements IRegion {
 
 abstract class IVersionGroup {
   String get name;
+
   String get url;
 }
 

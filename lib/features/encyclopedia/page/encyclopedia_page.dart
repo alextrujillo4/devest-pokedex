@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/common/widgets/loading_widget.dart';
 import 'package:flutter_pokedex/common/widgets/problem_widget.dart';
-import 'package:flutter_pokedex/features/captured/bloc/captured_bloc.dart';
-import 'package:flutter_pokedex/features/captured/page/captured_page.dart';
 import 'package:flutter_pokedex/features/encyclopedia/bloc/encyclopedia_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokedex/pokedex_package.dart';
 import 'package:state_manager/state_manager.dart';
 
-import '../../../di.dart';
 import '../widget/pokemon_entry_widget.dart';
 
 class EncyclopediaPage extends StatelessWidget {
@@ -21,7 +18,10 @@ class EncyclopediaPage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
-        title:  Text('Pokédex', style: Theme.of(context).textTheme.titleLarge,),
+        title: Text(
+          'Pokédex',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         label: Text("Catched"),
@@ -39,14 +39,17 @@ class EncyclopediaPage extends StatelessWidget {
               title: state.failure.toString(),
               message: state.failure.message,
               onTap: () {
-                context.read<EncyclopediaBloc>().add(Invoke(params: "kanto"));
+                context.read<EncyclopediaBloc>().add(
+                      Invoke(
+                        params: RequestAllParam(region: "kanto"),
+                      ),
+                );
               },
             );
-          } else if (state is SUCCESS<IPokedex>) {
-            final pokemons = state.data.pokemonEntries;
+          } else if (state is SUCCESS<List<IPokemonEntry>>) {
             return Stack(
               children: [
-                _buildGridView(context, pokemons),
+                _buildGridView(context, state.data),
               ],
             );
           } else {

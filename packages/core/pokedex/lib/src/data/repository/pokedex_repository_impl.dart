@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:failure/failure_package.dart';
 import 'package:pokedex/pokedex_package.dart';
+import 'package:pokedex/src/domain/repository/pokedex_repository.dart';
 
 import '../datasource/remote_data_source.dart';
 

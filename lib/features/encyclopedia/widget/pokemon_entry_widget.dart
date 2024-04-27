@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pokedex/common/constants/extensions.dart';
-import 'package:flutter_pokedex/di.dart';
-import 'package:flutter_pokedex/features/detail/bloc/pokemon_detail_bloc.dart';
-import 'package:flutter_pokedex/features/detail/page/detail_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokedex/pokedex_package.dart';
-import 'package:pokemon/pokemon_package.dart';
-import 'package:state_manager/state_manager.dart';
 
 class PokemonItemWidget extends StatelessWidget {
   const PokemonItemWidget({
@@ -45,9 +40,9 @@ class PokemonItemWidget extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "$position",
+                    pokemon.entryNumber.formattedPokemonId,
                     style: const TextStyle(
-                      fontSize: 32.0,
+                      fontSize: 24.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -55,7 +50,7 @@ class PokemonItemWidget extends StatelessWidget {
               ),
             ),
             Image.network(
-              height: 120,
+              height: 100,
               width: double.infinity,
               "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.entryNumber}.png",
               fit: BoxFit.cover,
