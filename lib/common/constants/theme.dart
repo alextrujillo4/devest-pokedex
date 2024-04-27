@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 final appTheme = ThemeData(
   useMaterial3: true,
-  colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+  colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red, backgroundColor: Colors.white),
   textTheme: const TextTheme(
     displayLarge: TextStyle(
       fontFamily: 'Corben',

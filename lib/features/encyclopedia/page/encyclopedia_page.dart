@@ -16,8 +16,7 @@ class EncyclopediaPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Pokédex'),
+        title:  Text('Pokédex', style: Theme.of(context).textTheme.titleLarge,),
       ),
       floatingActionButton: FloatingActionButton.extended(
         label: Text("Catched"),

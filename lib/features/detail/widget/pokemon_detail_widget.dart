@@ -1,17 +1,19 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:d_chart/single_bar/view.dart';
-import 'package:flowery_tts/flowery_tts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/common/constants/app_colors.dart';
 import 'package:flutter_pokedex/common/constants/extensions.dart';
 import 'package:flutter_pokedex/common/widgets/capture_widget.dart';
+import 'package:flutter_pokedex/common/widgets/problem_widget.dart';
+import 'package:flutter_pokedex/features/detail/bloc/pokemon_detail_bloc.dart';
 import 'package:flutter_pokedex/features/detail/widget/audio_icon_btn.dart';
 import 'package:flutter_pokedex/features/detail/widget/pokemon_foot_icons.dart';
 import 'package:flutter_pokedex/features/detail/widget/pokemon_info_card.dart';
 import 'package:flutter_pokedex/features/detail/widget/pokemon_type_icons.dart';
 import 'package:flutter_pokedex/features/detail/widget/section_title.dart';
 import 'package:pokemon/pokemon_package.dart';
+import 'package:state_manager/state_manager.dart';
 
 import '../../../di.dart';
 
@@ -47,7 +49,10 @@ class PokemonDetailWidget extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  AudioIconButton(flowery: sl(), player: sl(), description: pokemon.description)
+                  AudioIconButton(
+                      flowery: sl(),
+                      player: sl(),
+                      description: pokemon.description)
                 ],
               ),
               Center(
@@ -215,12 +220,53 @@ class PokemonDetailWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4),
-              CaptureWidget(
-                onPressed: () {},
-                label: 'Capture',
-                icon: const Icon(
-                  Icons.catching_pokemon_outlined,
-                  color: Colors.white,
+              BlocProvider(
+                create: (_) => sl<PokemonDetailBloc>()
+                  ..add(Invoke(params: CheckIsFavorite(id: pokemon.id))),
+                child: BlocBuilder<PokemonDetailBloc, RequestState>(
+                  builder: (context, state) {
+                    if (state is LOADING) {
+                      return const CircularProgressIndicator();
+                    } else if (state is ERROR) {
+                      return ProblemWidget(
+                        title: state.failure.toString(),
+                        message: state.failure.message,
+                        onTap: () {
+                          context.read<PokemonDetailBloc>().add(
+                              Invoke(params: CheckIsFavorite(id: pokemon.id)));
+                        },
+                      );
+                    } else if (state is SUCCESS<bool>) {
+                      final isAlreadyCaptured = state.data;
+                      return isAlreadyCaptured
+                          ? CaptureWidget(
+                              background: AppColors.goldFoil.withOpacity(0.8),
+                              onPressed: () {
+                                context.read<PokemonDetailBloc>().add(Invoke(
+                                    params: DeleteFavorite(id: pokemon.id)));
+                              },
+                              label: 'Release Pokemon',
+                              icon: const Icon(
+                                Icons.catching_pokemon_outlined,
+                                color: Colors.white,
+                              ),
+                            )
+                          : CaptureWidget(
+                              background: AppColors.red.withOpacity(0.8),
+                              onPressed: () {
+                                context.read<PokemonDetailBloc>().add(Invoke(
+                                    params: AddFavorite(pokemon: pokemon)));
+                              },
+                              label: 'Capture Pokemon',
+                              icon: const Icon(
+                                Icons.catching_pokemon_outlined,
+                                color: Colors.white,
+                              ),
+                            );
+                    } else {
+                      return const CircularProgressIndicator();
+                    }
+                  },
                 ),
               ),
             ],

@@ -15,7 +15,7 @@ class PokemonDetailBloc extends StateManagement {
         _useCase = useCase {
     on<Invoke<RequestParam>>(_getPokemonFromId);
     on<Invoke<GetFavorite>>(_getFavoriteMoveFromId);
-    on<Invoke<IPokemon>>(_addToFavorites);
+    on<Invoke<AddFavorite>>(_addToFavorites);
     on<Invoke<DeleteFavorite>>(_removeFromFavorites);
     on<Invoke<CheckIsFavorite>>(_checkFavoriteMoveFromId);
   }
@@ -62,11 +62,11 @@ class PokemonDetailBloc extends StateManagement {
     }
   }
 
-  _addToFavorites(Invoke<IPokemon> event, Emitter<RequestState> emit) async {
+  _addToFavorites(Invoke<AddFavorite> event, Emitter<RequestState> emit) async {
     try {
-      final params = event.params;
+      final IPokemon pokemon = event.params.pokemon;
       emit(LOADING(message: "Capturando pokemon ..."));
-      final failureOrSuccess = await _useCase(params);
+      final failureOrSuccess = await _useCase(pokemon);
       return failureOrSuccess.fold((failure) => emit(ERROR(failure: failure)),
           (isSuccess) => emit(SUCCESS<bool>(data: isSuccess)));
     } catch (e, s) {
