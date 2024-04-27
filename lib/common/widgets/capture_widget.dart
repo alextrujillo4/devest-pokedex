@@ -14,8 +14,11 @@ class CaptureWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      elevation: 2,
       onPressed: onPressed,
-      color: Colors.amber,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16)),
+    color: Colors.black.withOpacity(0.1),
       child: SizedBox(
         height: 62,
         width: double.maxFinite,
@@ -27,7 +30,7 @@ class CaptureWidget extends StatelessWidget {
               label,
               style: const TextStyle(
                 fontSize: 16,
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
             const SizedBox(width: 5), // Adjust spacing as needed
