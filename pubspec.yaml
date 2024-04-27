@@ -20,6 +20,8 @@ dependencies:
   d_chart: ^2.6.9
   flowery_tts: ^1.1.0
   audioplayers: ^6.0.0
+  cached_network_image: ^3.3.1
+  go_router: ^14.0.1
 
   #DATA/DOMAIN
   pokemon:

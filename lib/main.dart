@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/common/constants/app_strings.dart';
 import 'package:flutter_pokedex/common/constants/theme.dart';
+import 'package:flutter_pokedex/features/captured/bloc/captured_bloc.dart';
 import 'package:flutter_pokedex/features/encyclopedia/bloc/encyclopedia_bloc.dart';
 import 'package:network/di.dart' as network;
 import 'package:pokedex/di.dart' as pokedex;
@@ -9,8 +10,8 @@ import 'package:pokemon/di.dart' as pokemon;
 import 'package:state_manager/state_manager.dart';
 import 'package:storage/di.dart' as storage;
 
+import 'common/constants/app_routes.dart';
 import 'di.dart';
-import 'features/encyclopedia/page/encyclopedia_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,15 +28,19 @@ class PokedexApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: AppStrings.appBarTitle,
-      theme: appTheme,
-      home: MultiBlocProvider(
+    return MultiBlocProvider(
         providers: [
-          BlocProvider(create: (_) => sl<EncyclopediaBloc>()..add(Invoke(params: "kanto"))),
+          BlocProvider(
+              create: (_) =>
+                  sl<EncyclopediaBloc>()..add(Invoke(params: "kanto"))),
+          BlocProvider(
+              create: (_) =>
+                  sl<CapturedBloc>()..add(Invoke(params: const NoParams()))),
         ],
-        child: const EncyclopediaPage(),
-      ),
-    );
+        child: MaterialApp.router(
+          title: AppStrings.appBarTitle,
+          routerConfig: appRouter,
+          theme: appTheme,
+        ));
   }
 }

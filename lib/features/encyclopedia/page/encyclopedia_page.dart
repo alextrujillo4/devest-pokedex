@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/common/widgets/loading_widget.dart';
 import 'package:flutter_pokedex/common/widgets/problem_widget.dart';
+import 'package:flutter_pokedex/features/captured/bloc/captured_bloc.dart';
+import 'package:flutter_pokedex/features/captured/page/captured_page.dart';
 import 'package:flutter_pokedex/features/encyclopedia/bloc/encyclopedia_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokedex/pokedex_package.dart';
 import 'package:state_manager/state_manager.dart';
 
+import '../../../di.dart';
 import '../widget/pokemon_entry_widget.dart';
 
 class EncyclopediaPage extends StatelessWidget {
@@ -21,7 +25,9 @@ class EncyclopediaPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         label: Text("Catched"),
         icon: const Icon(Icons.catching_pokemon),
-        onPressed: () {},
+        onPressed: () {
+          context.go("/captured");
+        },
       ),
       body: BlocBuilder<EncyclopediaBloc, RequestState>(
         builder: (context, state) {

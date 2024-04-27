@@ -12,6 +12,7 @@ import 'package:flutter_pokedex/features/detail/widget/pokemon_foot_icons.dart';
 import 'package:flutter_pokedex/features/detail/widget/pokemon_info_card.dart';
 import 'package:flutter_pokedex/features/detail/widget/pokemon_type_icons.dart';
 import 'package:flutter_pokedex/features/detail/widget/section_title.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokemon/pokemon_package.dart';
 import 'package:state_manager/state_manager.dart';
 
@@ -20,7 +21,7 @@ import '../../../di.dart';
 class PokemonDetailWidget extends StatelessWidget {
   final IPokemon pokemon;
 
-  PokemonDetailWidget({
+  const PokemonDetailWidget({
     super.key,
     required this.pokemon,
   });
@@ -43,7 +44,9 @@ class PokemonDetailWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pop();
+                    },
                     icon: const Icon(
                       Icons.arrow_back_ios,
                       color: Colors.white,

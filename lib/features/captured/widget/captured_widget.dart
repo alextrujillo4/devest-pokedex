@@ -1,45 +1,42 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pokedex/common/constants/extensions.dart';
-import 'package:flutter_pokedex/di.dart';
-import 'package:flutter_pokedex/features/detail/bloc/pokemon_detail_bloc.dart';
-import 'package:flutter_pokedex/features/detail/page/detail_page.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokedex/pokedex_package.dart';
 import 'package:pokemon/pokemon_package.dart';
-import 'package:state_manager/state_manager.dart';
 
-class PokemonItemWidget extends StatelessWidget {
-  const PokemonItemWidget({
+class CapturedPokemonWidget extends StatelessWidget {
+  const CapturedPokemonWidget({
     super.key,
     required this.pokemon,
     required this.position,
   });
 
-  final IPokemonEntry pokemon;
+  final IPokemon pokemon;
   final int position;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.go("/pokemon/${pokemon.entryNumber}");
+        context.go("/detail/${pokemon.id}");
       },
       child: Card(
-        child: Stack(
-          alignment: Alignment.bottomCenter,
+        margin: const EdgeInsets.only(bottom: 16,left: 16, right: 16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 32),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    pokemon.pokemonSpecies.name.capitalize(),
+                    pokemon.name.capitalize(),
                     maxLines: 1,
                     textAlign: TextAlign.start,
                     style: const TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 24.0,
                       fontWeight: FontWeight.bold,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -47,18 +44,20 @@ class PokemonItemWidget extends StatelessWidget {
                   Text(
                     "$position",
                     style: const TextStyle(
-                      fontSize: 32.0,
+                      fontSize: 28.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
               ),
             ),
-            Image.network(
+            CachedNetworkImage(
+              width: 120,
               height: 120,
-              width: double.infinity,
-              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.entryNumber}.png",
               fit: BoxFit.cover,
+              imageUrl: pokemon.picture.frontDefault ?? '',
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ],
         ),
