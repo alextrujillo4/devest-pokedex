@@ -18,7 +18,7 @@ class CapturedPokemonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.go("/detail/${pokemon.id}");
+        context.push("/detail/${pokemon.id}");
       },
       child: Card(
         margin: const EdgeInsets.only(bottom: 16,left: 16, right: 16),
