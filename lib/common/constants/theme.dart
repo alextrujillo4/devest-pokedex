@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-final appTheme = ThemeData(
+ThemeData appTheme(Color primaryColor) => ThemeData(
   useMaterial3: true,
-  colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red, backgroundColor: Colors.white),
+  colorScheme: ColorScheme.fromSeed(primary: primaryColor, seedColor: primaryColor),
   textTheme: const TextTheme(
     displayLarge: TextStyle(
       fontFamily: 'Corben',

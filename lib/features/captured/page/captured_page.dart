@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/common/constants/app_strings.dart';
+import 'package:flutter_pokedex/common/settings_provider.dart';
 import 'package:flutter_pokedex/common/widgets/empty_widget.dart';
 import 'package:flutter_pokedex/common/widgets/loading_widget.dart';
 import 'package:flutter_pokedex/common/widgets/problem_widget.dart';
