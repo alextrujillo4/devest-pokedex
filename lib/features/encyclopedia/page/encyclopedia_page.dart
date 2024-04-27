@@ -15,8 +15,14 @@ class EncyclopediaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Pokédex Code Challenge'),
+        title: const Text('Pokédex'),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text("Catched"),
+        icon: const Icon(Icons.catching_pokemon),
+        onPressed: () {},
       ),
       body: BlocBuilder<EncyclopediaBloc, RequestState>(
         builder: (context, state) {
