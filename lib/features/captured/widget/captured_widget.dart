@@ -42,7 +42,7 @@ class CapturedPokemonWidget extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "$position",
+                    pokemon.id.formattedPokemonId,
                     style: const TextStyle(
                       fontSize: 28.0,
                       fontWeight: FontWeight.bold,
