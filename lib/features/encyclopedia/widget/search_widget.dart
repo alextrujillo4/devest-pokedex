@@ -45,7 +45,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                           key: const ValueKey('search_field'),
                           controller: _urlController,
                           decoration: const InputDecoration(
-                            hintText: "Search Pokemon",
+                            hintText: "Who's that pokemon?",
                             border: InputBorder.none,
                           ),
                           validator: (value) {
@@ -54,13 +54,17 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                             }
                             return null;
                           },
+                          textInputAction: TextInputAction.search,
                           onFieldSubmitted: (input) {
-                            context.read<EncyclopediaBloc>().add(
-                                  Invoke(
-                                    params: PokedexParams(
-                                        region: "kanto", query: input),
-                                  ),
-                                );
+                            if (_formKey.currentState!.validate()) {
+                              final input = _urlController.text;
+                              context.read<EncyclopediaBloc>().add(
+                                    Invoke(
+                                      params: PokedexParams(
+                                          region: "kanto", query: input),
+                                    ),
+                                  );
+                            }
                           },
                         ),
                       ),
@@ -77,7 +81,6 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                         region: "kanto", query: input),
                                   ),
                                 );
-                            _formKey.currentState?.save();
                           }
                         },
                       ),
