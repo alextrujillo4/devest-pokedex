@@ -13,15 +13,15 @@ class PokemonDetailBloc extends StateManagement {
     required AddFavoriteUseCase useCase,
   })  : _repository = repository,
         _useCase = useCase {
-    on<Invoke<RequestParam>>(_getPokemonFromId);
-    on<Invoke<GetFavorite>>(_getFavoriteMoveFromId);
-    on<Invoke<AddFavorite>>(_addToFavorites);
-    on<Invoke<DeleteFavorite>>(_removeFromFavorites);
-    on<Invoke<CheckIsFavorite>>(_checkFavoriteMoveFromId);
+    on<Invoke<RequestPokemonParam>>(_getPokemonFromId);
+    on<Invoke<GetFavoriteByIdParam>>(_getFavoriteMoveFromId);
+    on<Invoke<AddToFavoriteParam>>(_addToFavorites);
+    on<Invoke<DeleteFavoriteParam>>(_removeFromFavorites);
+    on<Invoke<CheckIsFavoriteParam>>(_checkFavoriteMoveFromId);
   }
 
   _getPokemonFromId(
-      Invoke<RequestParam> event, Emitter<RequestState> emit) async {
+      Invoke<RequestPokemonParam> event, Emitter<RequestState> emit) async {
     try {
       final id = event.params.id;
       emit(LOADING(message: "Obteniendo pokemon"));
@@ -35,7 +35,7 @@ class PokemonDetailBloc extends StateManagement {
   }
 
   _getFavoriteMoveFromId(
-      Invoke<GetFavorite> event, Emitter<RequestState> emit) async {
+      Invoke<GetFavoriteByIdParam> event, Emitter<RequestState> emit) async {
     try {
       final id = event.params.id;
       emit(LOADING(message: "Obteniendo pokemon capturado"));
@@ -49,7 +49,7 @@ class PokemonDetailBloc extends StateManagement {
   }
 
   _checkFavoriteMoveFromId(
-      Invoke<CheckIsFavorite> event, Emitter<RequestState> emit) async {
+      Invoke<CheckIsFavoriteParam> event, Emitter<RequestState> emit) async {
     try {
       final id = event.params.id;
       emit(LOADING(message: "Verificando"));
@@ -62,7 +62,7 @@ class PokemonDetailBloc extends StateManagement {
     }
   }
 
-  _addToFavorites(Invoke<AddFavorite> event, Emitter<RequestState> emit) async {
+  _addToFavorites(Invoke<AddToFavoriteParam> event, Emitter<RequestState> emit) async {
     try {
       final IPokemon pokemon = event.params.pokemon;
       emit(LOADING(message: "Capturando pokemon ..."));
@@ -76,7 +76,7 @@ class PokemonDetailBloc extends StateManagement {
   }
 
   _removeFromFavorites(
-      Invoke<DeleteFavorite> event, Emitter<RequestState> emit) async {
+      Invoke<DeleteFavoriteParam> event, Emitter<RequestState> emit) async {
     try {
       final params = event.params.id;
       emit(LOADING(message: "Removiendo favorito"));

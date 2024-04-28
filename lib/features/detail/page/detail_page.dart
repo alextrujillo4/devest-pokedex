@@ -40,7 +40,7 @@ class DetailPage extends StatelessWidget {
                   message: state.failure.message,
                   onTap: () {
                     context.read<PokemonDetailBloc>().add(Invoke(
-                        params: RequestParam(id: _selectedPokemonId)));
+                        params: RequestPokemonParam(id: _selectedPokemonId)));
                   },
                 );
               } else if (state is SUCCESS<IPokemon>) {

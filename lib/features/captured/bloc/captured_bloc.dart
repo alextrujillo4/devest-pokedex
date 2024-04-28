@@ -10,11 +10,11 @@ class CapturedBloc extends StateManagement {
   CapturedBloc({
     required RequestCapturedPokemonsUsecase useCase,
   }) : _useCase = useCase {
-    on<Invoke<GetAllFavoritesParams>>(_getFavorites);
+    on<Invoke<GetFavoritesParams>>(_getFavorites);
   }
 
   _getFavorites(
-      Invoke<GetAllFavoritesParams> event, Emitter<RequestState> emit) async {
+      Invoke<GetFavoritesParams> event, Emitter<RequestState> emit) async {
     try {
       emit(LOADING(message: "Obteniendo favoritos"));
       final failureOrSuccess = await _useCase(event.params);

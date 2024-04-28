@@ -4,14 +4,14 @@ import 'package:pokemon/pokemon_package.dart';
 import 'package:state_manager/state_manager.dart';
 
 class RequestCapturedPokemonsUsecase
-    implements UseCase<List<IPokemon>, GetAllFavoritesParams> {
+    implements UseCase<List<IPokemon>, GetFavoritesParams> {
   final PokemonRepository repository;
 
   const RequestCapturedPokemonsUsecase(this.repository);
 
   @override
   Future<Either<Failure, List<IPokemon>>> call(
-    GetAllFavoritesParams params,
+    GetFavoritesParams params,
   ) async {
     final pokedex = await repository.getAllFavorites();
     return pokedex.fold((error) => Left(error), (success) {

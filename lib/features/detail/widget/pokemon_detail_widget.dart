@@ -226,12 +226,12 @@ class PokemonDetailWidget extends StatelessWidget {
               const SizedBox(height: 4),
               BlocProvider(
                 create: (_) => sl<PokemonDetailBloc>()
-                  ..add(Invoke(params: CheckIsFavorite(id: pokemon.id))),
+                  ..add(Invoke(params: CheckIsFavoriteParam(id: pokemon.id))),
                 child: BlocConsumer<PokemonDetailBloc, RequestState>(
                   listener: (context, state) {
                     context
                         .read<CapturedBloc>()
-                        .add(Invoke(params: GetAllFavoritesParams()));
+                        .add(Invoke(params: GetFavoritesParams()));
                   },
                   builder: (context, state) {
                     if (state is LOADING) {
@@ -242,7 +242,7 @@ class PokemonDetailWidget extends StatelessWidget {
                         message: state.failure.message,
                         onTap: () {
                           context.read<PokemonDetailBloc>().add(
-                              Invoke(params: CheckIsFavorite(id: pokemon.id)));
+                              Invoke(params: CheckIsFavoriteParam(id: pokemon.id)));
                         },
                       );
                     } else if (state is SUCCESS<bool>) {
@@ -253,7 +253,7 @@ class PokemonDetailWidget extends StatelessWidget {
                               background: AppColors.goldFoil.withOpacity(0.8),
                               onPressed: () {
                                 context.read<PokemonDetailBloc>().add(Invoke(
-                                    params: DeleteFavorite(id: pokemon.id)));
+                                    params: DeleteFavoriteParam(id: pokemon.id)));
                               },
                               label: 'Release Pokemon',
                               icon: const Icon(
@@ -265,7 +265,7 @@ class PokemonDetailWidget extends StatelessWidget {
                               background: AppColors.red.withOpacity(0.8),
                               onPressed: () {
                                 context.read<PokemonDetailBloc>().add(Invoke(
-                                    params: AddFavorite(pokemon: pokemon)));
+                                    params: AddToFavoriteParam(pokemon: pokemon)));
                               },
                               label: 'Capture Pokemon',
                               icon: const Icon(

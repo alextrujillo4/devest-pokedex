@@ -75,7 +75,7 @@ class _CapturedPokemonsWidgetState extends State<CapturedPokemonsWidget> {
                       _value = index;
                       context.read<CapturedBloc>().add(
                             Invoke(
-                              params: GetAllFavoritesParams(
+                              params: GetFavoritesParams(
                                 type: _value == 0
                                     ? FilterType.ID
                                     : _value == 1

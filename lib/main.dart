@@ -43,7 +43,7 @@ class PokedexApp extends StatelessWidget {
         ),
         BlocProvider(
             create: (_) => sl<CapturedBloc>()
-              ..add(Invoke(params: GetAllFavoritesParams()))),
+              ..add(Invoke(params: GetFavoritesParams()))),
       ],
       child: BlocBuilder<CapturedBloc, RequestState>(
         builder: (context, state) {

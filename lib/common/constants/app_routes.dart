@@ -25,7 +25,7 @@ final GoRouter appRouter = GoRouter(
           builder: (BuildContext context, GoRouterState state) {
             context
                 .read<CapturedBloc>()
-                .add(Invoke(params: GetAllFavoritesParams()));
+                .add(Invoke(params: GetFavoritesParams()));
             return const CapturedPage();
           },
         ),
@@ -36,7 +36,7 @@ final GoRouter appRouter = GoRouter(
             print("Pokemon is: $id");
             return DetailPage(
               bloc: sl<PokemonDetailBloc>()
-                ..add(Invoke(params: RequestParam(id: id))),
+                ..add(Invoke(params: RequestPokemonParam(id: id))),
               selectedPokemonId: id,
             );
           },
@@ -48,7 +48,7 @@ final GoRouter appRouter = GoRouter(
             print("Pokemon is: $id");
             return DetailPage(
               bloc: sl<PokemonDetailBloc>()
-                ..add(Invoke(params: GetFavorite(id: id))),
+                ..add(Invoke(params: GetFavoriteByIdParam(id: id))),
               selectedPokemonId: id,
             );
           },
