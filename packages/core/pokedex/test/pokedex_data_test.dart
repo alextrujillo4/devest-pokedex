@@ -14,7 +14,7 @@ import 'pokedex_data_test.mocks.dart';
 @GenerateMocks([HttpInterceptor, http.Response])
 void main() {
   final mockDir = "${Directory.current.path}/test/mocks";
-  const url = "kanto";
+  const url = "pokedex/kanto";
 
   group('PokedexRemoteDatasourceImpl Tests', () {
     late PokedexRemoteDataSourceImpl
@@ -28,7 +28,7 @@ void main() {
 
     test('should return a Pokemon when JSON parsing is successful', () async {
       final successResponse =
-          await File('$mockDir/encyclopedia.json').readAsString();
+          await File('$mockDir/pokedex.json').readAsString();
 
       when(mockHttp.requestGet(path: url))
           .thenAnswer((_) async => http.Response(

@@ -23,7 +23,7 @@ endef
 
 run_tests:
 	$(call print_header,Running tests...)
-	flutter --no-color test --machine --coverage test
+	flutter test
 	$(call run_in_packages,$(CORE) $(COMMON),flutter --no-color test --machine --coverage test)
 
 # Install dependencies
