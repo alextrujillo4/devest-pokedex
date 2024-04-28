@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/common/widgets/loading_widget.dart';
@@ -21,7 +22,10 @@ class EncyclopediaPage extends StatelessWidget {
         backgroundColor: Theme.of(context).primaryColor,
         title: Text(
           'Pokédex',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(color: Colors.white),
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -44,15 +48,26 @@ class EncyclopediaPage extends StatelessWidget {
                       Invoke(
                         params: PokedexParams(region: "kanto"),
                       ),
-                );
+                    );
               },
             );
           } else if (state is SUCCESS<List<IPokemonEntry>>) {
             return Stack(
               children: [
-                _buildGridView(context, state.data),
+                kIsWeb
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Flexible(flex: 1, child: SizedBox()),
+                          Flexible(
+                            flex: 3,
+                            child: _buildGridView(context, state.data),
+                          ),
+                          const Flexible(flex: 1, child: SizedBox()),
+                        ],
+                      )
+                    : _buildGridView(context, state.data),
                 const SearchBarWidget(),
-
               ],
             );
           } else {
