@@ -6,6 +6,7 @@ import 'package:network/network.dart';
 import 'package:pokedex/pokedex_package.dart';
 import 'package:pokedex/src/data/datasource/remote_data_source.dart';
 import 'package:pokedex/src/data/repository/pokedex_repository_impl.dart';
+import 'package:pokedex/src/domain/repository/pokedex_repository.dart';
 import 'pokedex_domain_test.mocks.dart';
 
 class MockPokedex extends Mock implements Pokedex {}

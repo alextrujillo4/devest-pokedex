@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/common/widgets/loading_widget.dart';
 import 'package:flutter_pokedex/common/widgets/problem_widget.dart';
 import 'package:flutter_pokedex/features/encyclopedia/bloc/encyclopedia_bloc.dart';
+import 'package:flutter_pokedex/features/encyclopedia/widget/search_bar.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokedex/pokedex_package.dart';
 import 'package:state_manager/state_manager.dart';
@@ -50,6 +51,8 @@ class EncyclopediaPage extends StatelessWidget {
             return Stack(
               children: [
                 _buildGridView(context, state.data),
+                SearchBarWidget(),
+
               ],
             );
           } else {
