@@ -77,10 +77,10 @@ class _CapturedPokemonsWidgetState extends State<CapturedPokemonsWidget> {
                             Invoke(
                               params: GetFavoritesParams(
                                 type: _value == 0
-                                    ? FilterType.ID
+                                    ? FilterType.id
                                     : _value == 1
-                                        ? FilterType.NAME
-                                        : FilterType.NAME_REVERSED,
+                                        ? FilterType.name
+                                        : FilterType.nameReversed,
                               ),
                             ),
                           );

@@ -3,9 +3,6 @@ import 'package:failure/failure_package.dart';
 import 'package:pokemon/pokemon_package.dart';
 import 'package:pokemon/src/data/datasource/local_data_source.dart';
 import 'package:pokemon/src/data/datasource/remote_data_source.dart';
-import 'package:pokemon/src/domain/entity/ipokemon.dart';
-
-import '../../domain/entity/pokemon.dart';
 
 class PokemonRepositoryImpl extends ErrorHandler implements PokemonRepository {
   final PokemonRemoteDatasource _remoteDatasource;

@@ -1,6 +1,6 @@
 import 'package:state_manager/state_manager.dart';
 
-enum OrderBy { TYPE, NAME, ID }
+enum OrderBy { type, name, id }
 
 class PokedexParams extends Params {
   final String region;

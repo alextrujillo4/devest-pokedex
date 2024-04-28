@@ -48,7 +48,6 @@ void main() {
       'RequestPokedexUsecase should return a failure when adding pokedex fails',
       () async {
     useCase = RequestPokedexUsecase(mockErrorPokedexRepository);
-    final pokedex = mockPokedex();
 
     final result = await useCase(PokedexParams(region: 'Region'));
     expect(

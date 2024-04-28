@@ -4,7 +4,6 @@ class AppAssets {
   }
 
   static String getTypeImagePath(String type) {
-    print(type);
     return 'assets/images/types/${type.toLowerCase()}.svg';
   }
 }

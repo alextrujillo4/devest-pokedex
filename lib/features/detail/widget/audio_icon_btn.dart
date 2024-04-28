@@ -8,11 +8,11 @@ class AudioIconButton extends StatelessWidget {
   final String description;
 
   const AudioIconButton({
-    Key? key,
+    super.key,
     required this.flowery,
     required this.player,
     required this.description,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

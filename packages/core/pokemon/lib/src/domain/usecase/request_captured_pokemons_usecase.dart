@@ -15,9 +15,9 @@ class RequestCapturedPokemonsUsecase
   ) async {
     final pokedex = await repository.getAllFavorites();
     return pokedex.fold((error) => Left(error), (success) {
-      if (params.type == FilterType.ID) {
+      if (params.type == FilterType.id) {
         success.sort((a, b) => a.id.compareTo(b.id));
-      } else if (params.type == FilterType.NAME) {
+      } else if (params.type == FilterType.name) {
         success.sort((a, b) => a.name.compareTo(b.name));
       } else {
         success.sort((a, b) => b.name.compareTo(a.name));

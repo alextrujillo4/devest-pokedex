@@ -7,45 +7,44 @@ import 'package:pokedex/pokedex_package.dart';
 import 'package:pokedex/src/data/datasource/remote_data_source.dart';
 import 'package:pokedex/src/data/repository/pokedex_repository_impl.dart';
 import 'package:pokedex/src/domain/repository/pokedex_repository.dart';
+
 import 'pokedex_domain_test.mocks.dart';
 
 class MockPokedex extends Mock implements Pokedex {}
 
 @GenerateMocks([PokedexRemoteDataSource])
 void main() {
-  const REGION = "kanto";
+  const regionName = "kanto";
   group("Pokedex:Domain Package Test", () {
     late PokedexRemoteDataSource remoteDatasource;
     late PokedexRepository repository;
 
     setUp(() {
       remoteDatasource = MockPokedexRemoteDataSource();
-      repository =
-          PokedexRepositoryImpl(remoteDataSource: remoteDatasource);
+      repository = PokedexRepositoryImpl(remoteDataSource: remoteDatasource);
     });
 
     test(
         'When getPokedex is performed successfully, Then repository return a Right',
         () async {
-      when(remoteDatasource.requestPokedexByRegion(REGION))
+      when(remoteDatasource.requestPokedexByRegion(regionName))
           .thenAnswer((_) async => MockPokedex());
 
-      final data = await repository.getPokedexByRegion(REGION);
+      final data = await repository.getPokedexByRegion(regionName);
 
       expect(
           data,
-          isA<Right>().having((event) => event.value.runtimeType, 'runtimeType',
-              MockPokedex));
+          isA<Right>().having(
+              (event) => event.value.runtimeType, 'runtimeType', MockPokedex));
     });
 
     test(
         'When getPokedex is performed, But Failure thrown, Then repository return a Left',
         () async {
-
-      when(remoteDatasource.requestPokedexByRegion(REGION))
+      when(remoteDatasource.requestPokedexByRegion(regionName))
           .thenThrow(ParseFailure(message: "some_message"));
 
-      final data = await repository.getPokedexByRegion(REGION);
+      final data = await repository.getPokedexByRegion(regionName);
 
       expect(
           data,

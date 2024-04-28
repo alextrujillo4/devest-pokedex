@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_pokedex/common/constants/app_assets.dart';
-import 'package:flutter_svg/svg.dart';
 
 class PokemonInfoCard extends StatelessWidget {
   final Widget child;
