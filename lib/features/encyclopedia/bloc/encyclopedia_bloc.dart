@@ -5,16 +5,16 @@ import 'package:state_manager/state_manager.dart';
 
 
 class EncyclopediaBloc extends StateManagement {
-  final RequestPokemonsUsecase _useCase;
+  final RequestPokedexUsecase _useCase;
 
   EncyclopediaBloc({
-    required RequestPokemonsUsecase usecase,
+    required RequestPokedexUsecase usecase,
   }) : _useCase = usecase {
-    on<Invoke<RequestAllParam>>(_getEncyclopedia);
+    on<Invoke<PokedexParams>>(_getEncyclopedia);
   }
 
   _getEncyclopedia(
-      Invoke<RequestAllParam> event, Emitter<RequestState> emit) async {
+      Invoke<PokedexParams> event, Emitter<RequestState> emit) async {
     try {
       emit(LOADING());
       final params = event.params;

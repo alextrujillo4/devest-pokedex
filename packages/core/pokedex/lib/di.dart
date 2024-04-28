@@ -11,8 +11,8 @@ Future<void> init() async {
   sl.registerFactory<PokedexRemoteDataSource>(
           () => PokedexRemoteDataSourceImpl(http: sl<HttpInterceptor>()));
 
-  sl.registerFactory<RequestPokemonsUsecase>(
-          () => RequestPokemonsUsecase(sl()));
+  sl.registerFactory<RequestPokedexUsecase>(
+          () => RequestPokedexUsecase(sl()));
 
 
   sl.registerFactory<PokedexRepository>(

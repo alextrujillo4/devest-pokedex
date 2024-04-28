@@ -39,7 +39,7 @@ class PokedexApp extends StatelessWidget {
           create: (_) => sl<EncyclopediaBloc>()
             ..add(
               Invoke(
-                params: RequestAllParam(region: "kanto"),
+                params: PokedexParams(region: "kanto"),
               ),
             ),
         ),

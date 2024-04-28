@@ -4,15 +4,15 @@ import 'package:pokedex/pokedex_package.dart';
 import 'package:pokedex/src/domain/repository/pokedex_repository.dart';
 import 'package:state_manager/state_manager.dart';
 
-class RequestPokemonsUsecase
-    implements UseCase<List<IPokemonEntry>, RequestAllParam> {
+class RequestPokedexUsecase
+    implements UseCase<List<IPokemonEntry>, PokedexParams> {
   final PokedexRepository repository;
 
-  const RequestPokemonsUsecase(this.repository);
+  const RequestPokedexUsecase(this.repository);
 
   @override
   Future<Either<Failure, List<IPokemonEntry>>> call(
-    RequestAllParam params,
+    PokedexParams params,
   ) async {
     final pokedex = await repository.getPokedexByRegion(params.region);
     return pokedex.fold((error) => Left(error), (success) {

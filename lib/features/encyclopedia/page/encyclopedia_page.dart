@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/common/widgets/loading_widget.dart';
 import 'package:flutter_pokedex/common/widgets/problem_widget.dart';
 import 'package:flutter_pokedex/features/encyclopedia/bloc/encyclopedia_bloc.dart';
-import 'package:flutter_pokedex/features/encyclopedia/widget/search_bar.dart';
+import 'package:flutter_pokedex/features/encyclopedia/widget/search_widget.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokedex/pokedex_package.dart';
 import 'package:state_manager/state_manager.dart';
@@ -25,7 +25,7 @@ class EncyclopediaPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        label: Text("Catched"),
+        label: const Text("Catched"),
         icon: const Icon(Icons.catching_pokemon),
         onPressed: () {
           context.go("/captured");
@@ -42,7 +42,7 @@ class EncyclopediaPage extends StatelessWidget {
               onTap: () {
                 context.read<EncyclopediaBloc>().add(
                       Invoke(
-                        params: RequestAllParam(region: "kanto"),
+                        params: PokedexParams(region: "kanto"),
                       ),
                 );
               },
@@ -51,7 +51,7 @@ class EncyclopediaPage extends StatelessWidget {
             return Stack(
               children: [
                 _buildGridView(context, state.data),
-                SearchBarWidget(),
+                const SearchBarWidget(),
 
               ],
             );
@@ -64,19 +64,22 @@ class EncyclopediaPage extends StatelessWidget {
   }
 
   Widget _buildGridView(BuildContext context, List<IPokemonEntry> pokemons) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        childAspectRatio: 0.90,
+    return Padding(
+      padding: const EdgeInsets.only(top: 80),
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          childAspectRatio: 0.90,
+        ),
+        itemCount: pokemons.length,
+        itemBuilder: (context, index) {
+          final pokemon = pokemons[index];
+          return PokemonItemWidget(
+            pokemon: pokemon,
+            position: index + 1,
+          );
+        },
       ),
-      itemCount: pokemons.length,
-      itemBuilder: (context, index) {
-        final pokemon = pokemons[index];
-        return PokemonItemWidget(
-          pokemon: pokemon,
-          position: index + 1,
-        );
-      },
     );
   }
 }

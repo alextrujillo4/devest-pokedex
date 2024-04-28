@@ -2,9 +2,9 @@ import 'package:state_manager/state_manager.dart';
 
 enum OrderBy { TYPE, NAME, ID }
 
-class RequestAllParam extends Params {
+class PokedexParams extends Params {
   final String region;
   final String? query;
 
-  RequestAllParam({required this.region, this.query});
+  PokedexParams({required this.region, this.query});
 }
