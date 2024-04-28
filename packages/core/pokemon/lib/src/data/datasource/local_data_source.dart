@@ -14,7 +14,7 @@ abstract class PokemonLocalDatasource {
 
   Future<bool> deleteFromFavorites(int id);
 
-  Future<bool> addToFavorites(Pokemon pokemon);
+  Future<bool> addToFavorites(IPokemon pokemon);
 
   Future<bool> isFavorite(int id);
 }
@@ -27,8 +27,8 @@ class PokemonLocalDatasourceImpl implements PokemonLocalDatasource {
   PokemonLocalDatasourceImpl({required this.storage});
 
   @override
-  Future<bool> addToFavorites(Pokemon pokemon) async {
-    List<Pokemon> existingPokemons = await _loadPokemons();
+  Future<bool> addToFavorites(IPokemon pokemon) async {
+    List<IPokemon> existingPokemons = await _loadPokemons();
     existingPokemons.insert(0, pokemon);
     _ensureListMaxSize(existingPokemons);
     List<String> dataToString = existingPokemons.map((e) => e.toJson()).toList();

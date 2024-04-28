@@ -6,13 +6,10 @@ import 'failure.dart';
 
 class PokemonDetailBloc extends StateManagement {
   final PokemonRepository _repository;
-  final AddFavoriteUseCase _useCase;
 
   PokemonDetailBloc({
     required PokemonRepository repository,
-    required AddFavoriteUseCase useCase,
-  })  : _repository = repository,
-        _useCase = useCase {
+  })  : _repository = repository{
     on<Invoke<RequestPokemonParam>>(_getPokemonFromId);
     on<Invoke<GetFavoriteByIdParam>>(_getFavoriteMoveFromId);
     on<Invoke<AddToFavoriteParam>>(_addToFavorites);
@@ -66,7 +63,7 @@ class PokemonDetailBloc extends StateManagement {
     try {
       final IPokemon pokemon = event.params.pokemon;
       emit(LOADING(message: "Capturando pokemon ..."));
-      final failureOrSuccess = await _useCase(pokemon);
+      final failureOrSuccess = await _repository.addToFavorite(pokemon);
       return failureOrSuccess.fold((failure) => emit(ERROR(failure: failure)),
           (isSuccess) => emit(SUCCESS<bool>(data: isSuccess)));
     } catch (e, s) {

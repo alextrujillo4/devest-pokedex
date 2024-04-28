@@ -8,5 +8,4 @@ export 'src/domain/params/delete_favorite_param.dart';
 export 'src/domain/params/get_favorite_param.dart';
 export 'src/domain/params/request_pokemon_param.dart';
 export 'src/domain/repository/repository.dart';
-export 'src/domain/usecase/add_favorite_usecase.dart';
 export 'src/domain/usecase/request_captured_pokemons_usecase.dart';

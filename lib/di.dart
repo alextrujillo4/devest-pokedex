@@ -8,16 +8,14 @@ import 'package:get_it/get_it.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
-
   sl.registerLazySingleton(() => const Flowery());
 
   sl.registerLazySingleton(() => AudioPlayer());
 
-  sl.registerFactory<EncyclopediaBloc>(
-      () => EncyclopediaBloc(usecase: sl()));
+  sl.registerFactory<EncyclopediaBloc>(() => EncyclopediaBloc(usecase: sl()));
 
   sl.registerFactory<CapturedBloc>(() => CapturedBloc(useCase: sl()));
 
   sl.registerFactory<PokemonDetailBloc>(
-      () => PokemonDetailBloc(repository: sl(), useCase: sl()));
+      () => PokemonDetailBloc(repository: sl()));
 }

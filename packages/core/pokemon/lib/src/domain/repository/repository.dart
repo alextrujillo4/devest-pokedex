@@ -14,7 +14,7 @@ abstract class PokemonRepository {
 
   Future<Either<Failure, bool>> deleteFromFavorite(int id);
 
-  Future<Either<Failure, bool>> addToFavorite(Pokemon pokemon);
+  Future<Either<Failure, bool>> addToFavorite(IPokemon pokemon);
 
   Future<Either<Failure, bool>> getFavoriteStatus(int id);
 }

@@ -23,7 +23,7 @@ class PokemonRepositoryImpl extends ErrorHandler implements PokemonRepository {
           () async => await _remoteDatasource.requestPokemonDetail(id));
 
   @override
-  Future<Either<Failure, bool>> addToFavorite(Pokemon pokemon) async =>
+  Future<Either<Failure, bool>> addToFavorite(IPokemon pokemon) async =>
       handle<bool>(() async => await _localDatasource.addToFavorites(pokemon));
 
   @override

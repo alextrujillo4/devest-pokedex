@@ -21,10 +21,6 @@ Future<void> init() async {
     () => PokemonLocalDatasourceImpl(storage: sl<Storage>()),
   );
 
-  sl.registerFactory<AddFavoriteUseCase>(
-    () => AddFavoriteUseCase(sl()),
-  );
-
   sl.registerFactory<RequestCapturedPokemonsUsecase>(
     () => RequestCapturedPokemonsUsecase(sl()),
   );
