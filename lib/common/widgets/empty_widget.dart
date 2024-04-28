@@ -12,7 +12,7 @@ class EmptyWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            'assets/images/nope.jpg',
+            'assets/images/sad.png',
             // Adjust the path to your empty image asset
             width: 240, // Adjust the width of the image as needed
             height: 240, // Adjust the height of the image as needed
