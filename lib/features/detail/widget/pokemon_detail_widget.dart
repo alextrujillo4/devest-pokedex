@@ -197,8 +197,8 @@ class PokemonDetailWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     CachedNetworkImage(
-                      width: 80,
-                      height: 80,
+                      width: 120,
+                      height: 120,
                       fit: BoxFit.cover,
                       imageUrl: pokemon.picture.backDefault ?? '',
                       placeholder: (context, url) =>
@@ -211,8 +211,8 @@ class PokemonDetailWidget extends StatelessWidget {
                       color: Colors.white,
                     ),
                     CachedNetworkImage(
-                      width: 80,
-                      height: 80,
+                      width: 120,
+                      height: 120,
                       fit: BoxFit.cover,
                       imageUrl: pokemon.picture.frontDefault ?? '',
                       placeholder: (context, url) =>

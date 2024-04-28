@@ -21,7 +21,7 @@ class EncyclopediaPage extends StatelessWidget {
         backgroundColor: Theme.of(context).primaryColor,
         title: Text(
           'Pokédex',
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(

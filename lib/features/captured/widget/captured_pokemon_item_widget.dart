@@ -48,7 +48,7 @@ class _CapturedPokemonsWidgetState extends State<CapturedPokemonsWidget> {
           ),
           Text(
             "Captured",
-            style: Theme.of(context).textTheme.titleLarge,
+            style: Theme.of(context).textTheme.titleMedium,
           )
         ],
       ),

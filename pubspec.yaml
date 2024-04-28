@@ -64,3 +64,10 @@ flutter:
           weight: 700
         - asset: assets/fonts/Corben/Corben-Regular.ttf
           weight: 500
+    - family: PokemonSolid
+      fonts:
+        - asset: assets/fonts/Pokemon/PokemonSolid.ttf
+    - family: PokemonHollow
+      fonts:
+        - asset: assets/fonts/Pokemon/PokemonHollow.ttf
+
