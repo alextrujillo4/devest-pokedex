@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/common/constants/app_colors.dart';
 import 'package:flutter_pokedex/common/constants/extensions.dart';
-import 'package:flutter_pokedex/common/settings_provider.dart';
 import 'package:flutter_pokedex/common/widgets/capture_widget.dart';
 import 'package:flutter_pokedex/common/widgets/problem_widget.dart';
+import 'package:flutter_pokedex/features/captured/bloc/captured_bloc.dart';
 import 'package:flutter_pokedex/features/detail/bloc/pokemon_detail_bloc.dart';
 import 'package:flutter_pokedex/features/detail/widget/audio_icon_btn.dart';
 import 'package:flutter_pokedex/features/detail/widget/pokemon_foot_icons.dart';
@@ -227,7 +227,12 @@ class PokemonDetailWidget extends StatelessWidget {
               BlocProvider(
                 create: (_) => sl<PokemonDetailBloc>()
                   ..add(Invoke(params: CheckIsFavorite(id: pokemon.id))),
-                child: BlocBuilder<PokemonDetailBloc, RequestState>(
+                child: BlocConsumer<PokemonDetailBloc, RequestState>(
+                  listener: (context, state) {
+                    context
+                        .read<CapturedBloc>()
+                        .add(Invoke(params: const NoParams()));
+                  },
                   builder: (context, state) {
                     if (state is LOADING) {
                       return const CircularProgressIndicator();
@@ -242,6 +247,7 @@ class PokemonDetailWidget extends StatelessWidget {
                       );
                     } else if (state is SUCCESS<bool>) {
                       final isAlreadyCaptured = state.data;
+
                       return isAlreadyCaptured
                           ? CaptureWidget(
                               background: AppColors.goldFoil.withOpacity(0.8),

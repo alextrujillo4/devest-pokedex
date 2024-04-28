@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/common/constants/app_strings.dart';
-import 'package:flutter_pokedex/common/settings_provider.dart';
 import 'package:flutter_pokedex/common/widgets/empty_widget.dart';
 import 'package:flutter_pokedex/common/widgets/loading_widget.dart';
 import 'package:flutter_pokedex/common/widgets/problem_widget.dart';
@@ -9,7 +8,6 @@ import 'package:flutter_pokedex/features/captured/bloc/captured_bloc.dart';
 import 'package:pokemon/pokemon_package.dart';
 import 'package:state_manager/state_manager.dart';
 
-import '../../../di.dart';
 import '../widget/captured_widget.dart';
 
 class CapturedPage extends StatelessWidget {
@@ -39,11 +37,12 @@ class CapturedPage extends StatelessWidget {
                     .add(Invoke(params: const NoParams()));
               },
             );
-          } else if (state is SUCCESS<List<IPokemon>>) {
-            if (state.data.isEmpty) {
+          } else if (state is SUCCESS<(List<IPokemon>, String)>) {
+            final pokemons = state.data.$1;
+            if (pokemons.isEmpty) {
               return const EmptyWidget(message: AppStrings.emptyPokemons);
             }
-            return _buildListView(context, state.data);
+            return _buildListView(context, pokemons);
           } else {
             return const Center(child: CircularProgressIndicator());
           }
