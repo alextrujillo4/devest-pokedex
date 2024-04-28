@@ -33,7 +33,6 @@ final GoRouter appRouter = GoRouter(
           path: 'pokemon/:id',
           builder: (BuildContext context, GoRouterState state) {
             final id = int.parse(state.pathParameters["id"]!);
-            print("Pokemon is: $id");
             return DetailPage(
               bloc: sl<PokemonDetailBloc>()
                 ..add(Invoke(params: RequestPokemonParam(id: id))),
@@ -45,7 +44,6 @@ final GoRouter appRouter = GoRouter(
           path: 'detail/:id',
           builder: (BuildContext context, GoRouterState state) {
             final id = int.parse(state.pathParameters["id"]!);
-            print("Pokemon is: $id");
             return DetailPage(
               bloc: sl<PokemonDetailBloc>()
                 ..add(Invoke(params: GetFavoriteByIdParam(id: id))),
