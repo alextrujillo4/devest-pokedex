@@ -231,7 +231,7 @@ class PokemonDetailWidget extends StatelessWidget {
                   listener: (context, state) {
                     context
                         .read<CapturedBloc>()
-                        .add(Invoke(params: const NoParams()));
+                        .add(Invoke(params: GetAllFavoritesParams()));
                   },
                   builder: (context, state) {
                     if (state is LOADING) {

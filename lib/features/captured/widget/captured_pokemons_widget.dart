@@ -4,8 +4,8 @@ import 'package:flutter_pokedex/common/constants/extensions.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokemon/pokemon_package.dart';
 
-class CapturedPokemonWidget extends StatelessWidget {
-  const CapturedPokemonWidget({
+class CapturedPokemonItemWidget extends StatelessWidget {
+  const CapturedPokemonItemWidget({
     super.key,
     required this.pokemon,
     required this.position,

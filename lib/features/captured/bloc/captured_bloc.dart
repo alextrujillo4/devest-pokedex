@@ -5,18 +5,19 @@ import 'package:state_manager/state_manager.dart';
 import 'failure.dart';
 
 class CapturedBloc extends StateManagement {
-  final PokemonRepository _repository;
+  final RequestCapturedPokemonsUsecase _useCase;
 
   CapturedBloc({
-    required PokemonRepository repository,
-  }) : _repository = repository {
-    on<Invoke<NoParams>>(_getFavorites);
+    required RequestCapturedPokemonsUsecase useCase,
+  }) : _useCase = useCase {
+    on<Invoke<GetAllFavoritesParams>>(_getFavorites);
   }
 
-  _getFavorites(Invoke<NoParams> event, Emitter<RequestState> emit) async {
+  _getFavorites(
+      Invoke<GetAllFavoritesParams> event, Emitter<RequestState> emit) async {
     try {
       emit(LOADING(message: "Obteniendo favoritos"));
-      final failureOrSuccess = await _repository.getAllFavorites();
+      final failureOrSuccess = await _useCase(event.params);
       return failureOrSuccess.fold((failure) => emit(ERROR(failure: failure)),
           (pokemons) {
         final typeCounts = _countPokemonTypes(pokemons);

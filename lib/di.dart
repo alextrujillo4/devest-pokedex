@@ -16,7 +16,7 @@ Future<void> init() async {
   sl.registerFactory<EncyclopediaBloc>(
       () => EncyclopediaBloc(usecase: sl()));
 
-  sl.registerFactory<CapturedBloc>(() => CapturedBloc(repository: sl()));
+  sl.registerFactory<CapturedBloc>(() => CapturedBloc(useCase: sl()));
 
   sl.registerFactory<PokemonDetailBloc>(
       () => PokemonDetailBloc(repository: sl(), useCase: sl()));

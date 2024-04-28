@@ -23,7 +23,9 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: 'captured',
           builder: (BuildContext context, GoRouterState state) {
-            context.read<CapturedBloc>().add(Invoke(params: const NoParams()));
+            context
+                .read<CapturedBloc>()
+                .add(Invoke(params: GetAllFavoritesParams()));
             return const CapturedPage();
           },
         ),

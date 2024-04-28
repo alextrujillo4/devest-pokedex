@@ -8,7 +8,7 @@ import 'package:flutter_pokedex/features/captured/bloc/captured_bloc.dart';
 import 'package:pokemon/pokemon_package.dart';
 import 'package:state_manager/state_manager.dart';
 
-import '../widget/captured_widget.dart';
+import '../widget/captured_pokemon_item_widget.dart';
 
 class CapturedPage extends StatelessWidget {
   const CapturedPage({
@@ -19,10 +19,6 @@ class CapturedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: const Key("detail_page"),
-      appBar: AppBar(
-        title: const Text("Captured"),
-        centerTitle: true,
-      ),
       body: BlocBuilder<CapturedBloc, RequestState>(
         builder: (context, state) {
           if (state is LOADING) {
@@ -42,25 +38,12 @@ class CapturedPage extends StatelessWidget {
             if (pokemons.isEmpty) {
               return const EmptyWidget(message: AppStrings.emptyPokemons);
             }
-            return _buildListView(context, pokemons);
+            return CapturedPokemonsWidget(pokemons: pokemons);
           } else {
             return const Center(child: CircularProgressIndicator());
           }
         },
       ),
-    );
-  }
-
-  Widget _buildListView(BuildContext context, List<IPokemon> pokemons) {
-    return ListView.builder(
-      itemCount: pokemons.length,
-      itemBuilder: (context, index) {
-        final pokemon = pokemons[index];
-        return CapturedPokemonWidget(
-          pokemon: pokemon,
-          position: index + 1,
-        );
-      },
     );
   }
 }
