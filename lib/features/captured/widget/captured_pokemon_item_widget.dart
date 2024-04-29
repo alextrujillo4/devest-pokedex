@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/features/captured/bloc/captured_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:pokemon/pokemon_package.dart';
 import 'package:state_manager/state_manager.dart';
 
