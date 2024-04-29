@@ -17,15 +17,12 @@ class CapturedPokemonsWidget extends StatefulWidget {
 
 class _CapturedPokemonsWidgetState extends State<CapturedPokemonsWidget> {
   int? _value = 0;
-  final _orderBy = ["ID", "A-Z", "Z-A"];
+  final _orderBy = ["ID", "A-Z", "Z-A", "Type"];
 
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
-        _buildFilters(),
-        _buildListView(widget.pokemons)
-      ],
+      children: [_buildFilters(), _buildListView(widget.pokemons)],
     );
   }
 
@@ -39,7 +36,7 @@ class _CapturedPokemonsWidgetState extends State<CapturedPokemonsWidget> {
           Wrap(
             spacing: 5.0,
             children: List<Widget>.generate(
-              3,
+              4,
               (int index) {
                 return ChoiceChip(
                   label: Text(_orderBy[index]),
@@ -54,7 +51,9 @@ class _CapturedPokemonsWidgetState extends State<CapturedPokemonsWidget> {
                                     ? FilterType.id
                                     : _value == 1
                                         ? FilterType.name
-                                        : FilterType.nameReversed,
+                                        : _value == 2
+                                            ? FilterType.nameReversed
+                                            : FilterType.type,
                               ),
                             ),
                           );
