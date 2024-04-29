@@ -24,34 +24,9 @@ class _CapturedPokemonsWidgetState extends State<CapturedPokemonsWidget> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        _buildAppBar(),
         _buildFilters(),
         _buildListView(widget.pokemons)
       ],
-    );
-  }
-
-  Widget _buildAppBar() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 16),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          IconButton(
-            onPressed: () {
-              context.pop();
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: Colors.black,
-            ),
-          ),
-          Text(
-            "Captured",
-            style: Theme.of(context).textTheme.titleMedium,
-          )
-        ],
-      ),
     );
   }
 
@@ -103,6 +78,7 @@ class _CapturedPokemonsWidgetState extends State<CapturedPokemonsWidget> {
         itemBuilder: (context, index) {
           final pokemon = pokemons[index];
           return CapturedPokemonItemWidget(
+            key: Key("captured_pokemon_item_$index"),
             pokemon: pokemon,
             position: index + 1,
           );

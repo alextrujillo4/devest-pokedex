@@ -32,6 +32,7 @@ class CapturedPokemonItemWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
+                    key:const Key("captured_naming"),
                     pokemon.name.capitalize(),
                     maxLines: 1,
                     textAlign: TextAlign.start,

@@ -18,6 +18,7 @@ class EncyclopediaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key("encyclopedia_page"),
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
@@ -30,6 +31,7 @@ class EncyclopediaPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: AnimatedFloatingActionButton(
+        key: const Key("pokeball_btn"),
         onPressed: () => context.go("/captured"),
         imageAsset: "assets/images/pokeball.png",
       ),
@@ -65,7 +67,9 @@ class EncyclopediaPage extends StatelessWidget {
                         ],
                       )
                     : _buildGridView(context, state.data),
-                const SearchBarWidget(),
+                const SearchBarWidget(
+                  key: Key("search_widget"),
+                ),
               ],
             );
           } else {
@@ -88,6 +92,7 @@ class EncyclopediaPage extends StatelessWidget {
         itemBuilder: (context, index) {
           final pokemon = pokemons[index];
           return PokemonItemWidget(
+            key: Key("encyclopedia_pokemon_item_$index"),
             pokemon: pokemon,
             position: index + 1,
           );

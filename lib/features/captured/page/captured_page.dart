@@ -5,6 +5,7 @@ import 'package:flutter_pokedex/common/widgets/empty_widget.dart';
 import 'package:flutter_pokedex/common/widgets/loading_widget.dart';
 import 'package:flutter_pokedex/common/widgets/problem_widget.dart';
 import 'package:flutter_pokedex/features/captured/bloc/captured_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokemon/pokemon_package.dart';
 import 'package:state_manager/state_manager.dart';
 
@@ -18,7 +19,18 @@ class CapturedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: const Key("detail_page"),
+      key: const Key("captured_page"),
+      appBar: AppBar(
+        leading: IconButton(
+          key: const Key("captured_back_btn"),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => context.pop(),
+        ),
+        title: Text(
+          "Captured",
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+      ),
       body: BlocBuilder<CapturedBloc, RequestState>(
         builder: (context, state) {
           if (state is LOADING) {

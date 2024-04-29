@@ -45,6 +45,7 @@ class PokemonDetailWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
+                    key: const Key("detail_back_btn"),
                     onPressed: () {
                       context.pop();
                     },
@@ -111,6 +112,7 @@ class PokemonDetailWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
+                          key: const Key("pokemon_name"),
                           pokemon.name.capitalize(),
                           maxLines: 1,
                           textAlign: TextAlign.start,
@@ -241,8 +243,8 @@ class PokemonDetailWidget extends StatelessWidget {
                         title: state.failure.toString(),
                         message: state.failure.message,
                         onTap: () {
-                          context.read<PokemonDetailBloc>().add(
-                              Invoke(params: CheckIsFavoriteParam(id: pokemon.id)));
+                          context.read<PokemonDetailBloc>().add(Invoke(
+                              params: CheckIsFavoriteParam(id: pokemon.id)));
                         },
                       );
                     } else if (state is SUCCESS<bool>) {
@@ -253,7 +255,8 @@ class PokemonDetailWidget extends StatelessWidget {
                               background: AppColors.goldFoil.withOpacity(0.8),
                               onPressed: () {
                                 context.read<PokemonDetailBloc>().add(Invoke(
-                                    params: DeleteFavoriteParam(id: pokemon.id)));
+                                    params:
+                                        DeleteFavoriteParam(id: pokemon.id)));
                               },
                               label: 'Release Pokemon',
                               icon: const Icon(
@@ -265,7 +268,8 @@ class PokemonDetailWidget extends StatelessWidget {
                               background: AppColors.red.withOpacity(0.8),
                               onPressed: () {
                                 context.read<PokemonDetailBloc>().add(Invoke(
-                                    params: AddToFavoriteParam(pokemon: pokemon)));
+                                    params:
+                                        AddToFavoriteParam(pokemon: pokemon)));
                               },
                               label: 'Capture Pokemon',
                               icon: const Icon(

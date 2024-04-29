@@ -30,6 +30,7 @@ class PokemonItemWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
+                    key:const Key("entry_naming"),
                     pokemon.pokemonSpecies.name.capitalize(),
                     maxLines: 1,
                     textAlign: TextAlign.start,

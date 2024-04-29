@@ -8,6 +8,7 @@ class EmptyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
+      key: const Key("empty_widget"),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

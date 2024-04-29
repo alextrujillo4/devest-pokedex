@@ -17,6 +17,7 @@ class CaptureWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      key: const Key("capture_btn"),
       elevation: 2,
       onPressed: onPressed,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
