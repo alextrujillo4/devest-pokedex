@@ -24,7 +24,12 @@ endef
 run_tests:
 	$(call print_header,Running tests...)
 	flutter test
-	$(call run_in_packages,$(CORE) $(COMMON),flutter --no-color test --machine --coverage test)
+	$(call run_in_packages, $(CORE) $(COMMON),flutter test)
+
+
+run_integration_tests:
+	$(call print_header,Running integration tests...)
+	flutter test integration_test
 
 # Install dependencies
 get:
@@ -61,17 +66,37 @@ build:
 	flutter pub run build_runner build
 	$(call run_in_packages,$(CORE) $(COMMON), flutter pub run build_runner build);\
 
+compile_ios_app:
+	$(call print_header,Creating iOS build)
+	flutter build ipa; \
+
 compile_android_app:
 	$(call print_header,Creating Android build)
 	flutter build apk; \
 
-open_folder_build:
+compile_macos_app:
+	$(call print_header,Creating Android build)
+	flutter build macos; \
+
+open_android_folder_build:
 	$(call print_header,Oppening APK folder)
 	open build/app/outputs/flutter-apk/;\
 
+open_ios_folder_build:
+	$(call print_header,Oppening APK folder)
+	open build/ios/archive;\
 
-create-apk: compile_android_app open_folder_build
+open_macos_folder_build:
+	$(call print_header,Oppening APK folder)
+	open macos/Runner.xcworkspace
+
+
+create-android-app: compile_android_app open_android_folder_build
+create-ios-app: compile_ios_app open_ios_folder_build
+create-macos-app: compile_macos_app open_macos_folder_build
 tests: build run_tests
+integration_tests: run_integration_tests
+
 clean: flutter_clean pods-clean
 
 
