@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/common/widgets/loading_widget.dart';
 import 'package:flutter_pokedex/common/widgets/problem_widget.dart';
 import 'package:flutter_pokedex/features/encyclopedia/bloc/encyclopedia_bloc.dart';
+import 'package:flutter_pokedex/features/encyclopedia/widget/animated_floating_action_button.dart';
 import 'package:flutter_pokedex/features/encyclopedia/widget/search_widget.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokedex/pokedex_package.dart';
@@ -28,18 +29,9 @@ class EncyclopediaPage extends StatelessWidget {
               ?.copyWith(color: Colors.white),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.white.withAlpha(0),
-        onPressed: () {
-          context.go("/captured");
-        },
-        child:AnimatedRotation(
-          turns: 0.99,
-          duration: const Duration(seconds: 1),
-          child:  Image.asset("assets/images/pokeball.png"),
-        ),
-
-
+      floatingActionButton: AnimatedFloatingActionButton(
+        onPressed: () => context.go("/captured"),
+        imageAsset: "assets/images/pokeball.png",
       ),
       body: BlocBuilder<EncyclopediaBloc, RequestState>(
         builder: (context, state) {
