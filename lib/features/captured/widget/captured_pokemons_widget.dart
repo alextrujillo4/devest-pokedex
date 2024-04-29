@@ -45,14 +45,14 @@ class CapturedPokemonItemWidget extends StatelessWidget {
                   Text(
                     pokemon.id.formattedPokemonId,
                     style: const TextStyle(
-                      fontSize: 22.0,
+                      fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
                     "Type(s): ${pokemon.types.map((e) => e.name).toString()}",
                     style: const TextStyle(
-                      fontSize: 15.0,
+                      fontSize: 13.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -60,8 +60,8 @@ class CapturedPokemonItemWidget extends StatelessWidget {
               ),
             ),
             CachedNetworkImage(
-              width: 120,
-              height: 120,
+              width: 100,
+              height: 100,
               fit: BoxFit.cover,
               imageUrl: pokemon.picture.frontDefault ?? '',
               placeholder: (context, url) => const CircularProgressIndicator(),
