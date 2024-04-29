@@ -4,6 +4,8 @@
 
 [ -> POKEDEX VIDEO DEMO HERE :)](pokedex.mov)
 
+Web DEMO: https://dappy-ccf12.web.app/
+
 **My Mission:**
 
 * **Develop a comprehensive Pokédex app** that fulfills the requirements outlined below.
