@@ -9,10 +9,10 @@ class AnimatedFloatingActionButton extends StatefulWidget {
   final String imageAsset;
 
   const AnimatedFloatingActionButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.imageAsset,
-  }) : super(key: key);
+  });
 
   @override
   State<AnimatedFloatingActionButton> createState() => _AnimatedFloatingActionButtonState();
