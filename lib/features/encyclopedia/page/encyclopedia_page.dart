@@ -17,6 +17,7 @@ class EncyclopediaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLandscape = MediaQuery.of(context).size.height < MediaQuery.of(context).size.width;
     return Scaffold(
       key: const Key("encyclopedia_page"),
       appBar: AppBar(
@@ -54,7 +55,7 @@ class EncyclopediaPage extends StatelessWidget {
           } else if (state is SUCCESS<List<IPokemonEntry>>) {
             return Stack(
               children: [
-                kIsWeb
+                isLandscape
                     ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
