@@ -1,122 +1,128 @@
-<div style="text-align:center">
-    <img src="./assets/images/devest.svg" alt="image" width="60%" height="auto">
-</div>
+## Pokédex: A Flutter Challenge for Aspiring Pokémon Masters
 
-# Pokédex
+**Join forces with Devest** to bring the Pokédex to life, enabling trainers to access and manage their Pokémon collection seamlessly across Android, iOS, desktop, and web.
 
-<div style="text-align:center">
-    <img src="./assets/images/oak.png" alt="image" width="30%" height="auto">
-</div>
+**My Mission:**
 
-¡Hola entrenadores Pokémon! Soy el Profesor Oak, y tengo un desafío para vosotros que 
-estáis ansiosos por demostrar vuestras habilidades en Flutter y desarrollo multiplataforma.
+* **Develop a comprehensive Pokédex app** that fulfills the requirements outlined below.
+* **Demonstrate your expertise** in Flutter, UI/UX design, and clean architecture.
+* **Impress the Devest team** with your problem-solving skills and passion for Pokémon.
 
-En colaboración con mis amigos de Devest y dado que los teléfonos inteligentes e internet son ya
-el pan nuestro de cada día, hemos pensado que en lugar de tener que llevar en el bolsillo
-una Pokédex física, los entrenadores como tú podrían tener accesible la Pokédex en sus teléfonos
-móviles u ordenadores.
+**Requirements:**
 
-Te cuento más en detalle...
+**Target Platforms:**
+* Android
+* iOS
+* Desktop
+* Web
 
-## Requisitos
+**Core Features:**
 
-### Objetivo
+1.  **Pokédex:**
+   *   Display a list of all 151 Kanto region Pokémon.
+   *   Implement a search bar to filter Pokémon by name.
+   *   Allow users to navigate to a detailed view for each Pokémon.
 
-Tenemos reportes de entrenadores que usan teléfonos Android, Apple y ordenadores. Por lo que
-necesitamos que la Pokédex pueda ejecutarse en sistemas operativos **Android e iOS**. Para personas como yo
-que seguimos con nuestro Nokia 3310, podremos acceder a la Pokédex como **aplicación de escritorio** o **web**.
+2.  **Captured Pokémon:**
+   *   Display a list of captured Pokémon, sorted by ID.
+   *   Enable filtering by Pokémon type.
+   *   Provide alphabetical sorting.
+   *   Allow users to navigate to a detailed view for each captured Pokémon.
 
-### Descripción general:
+3.  **Pokémon Detail View:**
+   *   Display essential Pokémon information:
+      *   ID
+      *   Name
+      *   Image
+      *   Height and weight (in API units)
+      *   Types
+   *   Implement a toggle button to mark/unmark the Pokémon as captured.
+   *   Store captured Pokémon data locally.
+   *   Maintain navigation history. 
+   * 
+4. EXTRA MADE (Detail): Make Pokedex Talk yo you :D (take a look at hear btn)
 
-La Pokédex deberá tener las siguientes secciones:
-   - **Pokédex**: Lista de todos los Pokémon disponibles. 
-   - **Capturados**: Lista de los Pokémon capturados por el entrenador.
-   - **Pokémon en detalle**: Cuando se hace click en un Pokémon tanto de la Pokédex como de los Capturados, 
-debería abrirse una nueva pantalla donde se verán más detalles sobre el Pokémon seleccionado.
+**UI Customization:**
 
-**El menú puede ser de cualquier tipo** y dejamos a tu elección la decisión de cuál es el más adecuado 
-para nuestro caso de uso.
+*   **Default Theme:**
+   *   Adopt the classic Pokédex "Red" or "Boston University Red" color scheme.
+*   **Dynamic Theme:**
+   *   Adapt the color palette based on the majority captured Pokémon type.
+   *   Utilize the provided color reference for each type.
 
-Los datos serán obtenidos de la API pública de Pokémon llamada **PokéApi**, [aquí tienes su documentación](https://pokeapi.co/docs/v2).
+**Additional Considerations:**
 
-Ahora vamos a explicar más en profundidad qué queremos para cada pantalla...
+*   Embrace best practices in Flutter development and clean architecture.
+*   Leverage code quality control libraries.
+*   Explore opportunities to enhance user experience (UX) and graphical user interface (GUI).
 
-### Pokédex
+### Personal Info
 
-En esta sección, queremos que el entrenador pueda ver todos los Pokémon disponibles en su región. Esta
-primera versión de la Pokédex va a ser probada en la región de Kanto, esto quiere decir que **solo 
-queremos mostrar los primeros 151 Pokémon**.
+I'm Alex Trujillo, a passionate software developer with a keen interest in mobile app development
+using Flutter. You can find my work on:
 
-También queremos dar al entrenador la oportunidad de buscar los Pokémon por nombre, por lo que **integraremos un buscador
-que filtrará la lista de Pokémon a los que se ajusten con el texto de la búsqueda**.
+* **Website:** [https://alextrujillo4.com/](https://alextrujillo4.com/)
 
-Por supuesto, como hemos comentado antes, **al hacer click en un Pokémon de la lista, se abre otra pantalla con los detalles de dicho Pokémon**.
+I'm eager to showcase my skills :) Thank you to everyone at Devest :)
 
-### Capturados
+**Website:**
 
-En este apartado, queremos ver los Pokémon capturados por el entrenador. Al final, la Pokédex sirve para eso ¿no?
+Visit the Devest website for more information and to explore their work: Devest Website: [http://devest.com/](http://devest.com/)
 
-La lista de Pokémon capturados debe aparecer **ordenada por su id**. Aunque daremos al entrenador la
-posibilidad de **filtrar los Pokémon por tipo** y a **ordenarlos alfabéticamente**.
+**Steps:**
 
-Al igual que en la pantalla de Pokédex, **al hacer clic en un Pokémon de la lista, se verán los detalles del Pokémon en otra pantalla**.
+1.  **Clone the Repository:**
+    ```bash
+    git clone <repository_url>
+    ```
 
-### Vista en detalle del Pokémon
+2.  **Set up the Development Environment:**
+   * Follow the instructions provided in the repository to set up your development environment with Flutter version manager (fvm).
 
-Esta pantalla mostrará la información del Pokémon seleccionado. El diseño es de tu elección, pero necesitamos 
-**enseñar todos estos datos**:
-  - Id.
-  - Nombre.
-  - Foto.
-  - Altura y peso (en la unidad que devuelve la API, no es necesario hacer conversiones a centímetros o kilogramos).
-  - Tipos del Pokémon.
+3.  **Install Dependencies:**
+    ```bash
+    make get
+    ```
 
-Además de todos esos datos, deberemos poder **añadir o quitar el Pokémon como capturado**. Los Pokémon capturados
-deben de ser almacenados localmente en el teléfono. La manera en la que almacenes los datos es de tu elección.
+4.  **Build the Project:**
+    ```bash
+    make build
+    ```
+   * Note: Open an emulator if necessary.
 
-Por supuesto, **cuando se navegue hacia atrás, debemos volver a la misma pantalla que estábamos**.
+5.  **Run the App:**
+    ```bash
+    fvm flutter run
+    ```
 
-### UI - Interfaz de Usuario
+**Additional Makefile Commands:**
 
-Queremos que la Pokédex sea personalizable. Por ello vamos a personalizar los colores dependiendo de varios factores.
+The project utilizes a Makefile for various tasks. Refer to the provided Makefile within the repository for details on the following commands:
 
-Por defecto, **la paleta de colores usada en la aplicación y la Top Bar** va a ser del color original de la Pokédex, que 
-es el color "Red" o "Boston University Red" (el que más te guste). Puedes encontrar sus códigos de color 
-[en este enlace](https://www.schemecolor.com/pokemon-colors.php).
+* Linting (`make lint`)
+* Running Tests (`make tests`)
+* Running Integration Tests (`make integration_tests`)
+* Cleaning the Project (`make clean`)
+* Creating an Android App  (`make create-android-app`)
+* Creating an IOS App (`make create-android-app`)
+* For more commands take a look at Makefile :) 
 
-Para hacerlo aún más personalizable, **la paleta de colores cambiará dependiendo del tipo de los Pokémon capturados**.
+**Project Structure Overview:**
 
-Por ejemplo:
-- Si el entrenador tiene capturados 3 Pokémon de tipo Agua, y 2 de Planta, la paleta de colores será basada
-en el color asociado al tipo Agua. 
-- En el caso de que el entrenador no tenga Pokémon capturados o no haya un tipo mayoritario entre los Pokémon
-capturados (por ejemplo si el entrenador tiene capturados 2 Pokémon de tipo Planta y 2 de tipo Agua), la paleta
-de colores será la paleta por defecto mencionada anteriormente.
+The project follows a modular approach, organizing code into separate packages and directories for better maintainability and scalability. Here's a summary of the key structures:
 
-Los tipos de los Pokémon pueden obtenerse de la propia API y sus colores asociados pueden consultarse en 
-[este link](https://www.pokemonaaah.net/artsyfartsy/colordex/).
+* **Features Packages (Presentation):** (Located at `lib/`)
+   * Contains features related to specific functionalities like displaying Pokémon or managing captured Pokémon. (e.g., `most_popular`, `now_playing`, etc.)
 
-### Extra
-   - Los pasos anteriores son los requisitos mínimos, pero todas las mejoras añadidas en la experiencia de
-usuario (UX) o la interfaz gráfica (UI) son de agradecer.
-   - Se valorarán buenas prácticas, clean architecture y el uso de cualquier librería de control 
-   de calidad del código.
+* **Common Packages:** (Previously named Core Packages)
+   * Located at `packages/commons/`
+   * Houses utility functions for tasks like making HTTP requests or handling errors. (e.g., `network`, `failure`, etc.)
 
-## Conclusiones
-
-<div style="text-align:center">
-    <img src="./assets/images/oak_2.webp" alt="image" width="30%" height="auto">
-</div>
-
-Muchas gracias por tu colaboración, ¡todos los entrenadores Pokémon del mundo te estarán muy 
-agradecidos!
-
-Asegúrate de comenzar la Pokédex clonando este mismo repositorio, donde se te proporciona un proyecto vacío
-que ya es ejecutable en todas las plataformas mencionadas. En cuanto tengas la Pokédex terminada, 
-debes subirla a un repositorio git de tu elección, y enviar el link al equipo de Devest para su revisión.
-
-Los entrenadores están ansiosos, así que tienes una semana para mandarnos el resultado.
-
-En cuanto sea revisada, te llegarán noticias para saber si sigues en el proceso de selección.
-
-Mucha suerte y... ¡Hazte con todos!
+* **Domain/Data Packages:** (Located at `packages/core/`)
+   * Represents the core data model and logic of the application.
+   * Contains sub-packages for:
+      * **Entity:** Domain entities representing data concepts 
+      * **Params:** Parameter classes for passing data to use cases 
+      * **Repository:** Interfaces for repositories defining data access methods 
+      * **Usecase:** Use cases implementing the business logic of the application 
+* 
