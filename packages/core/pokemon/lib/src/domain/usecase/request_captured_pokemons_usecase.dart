@@ -20,7 +20,7 @@ class RequestCapturedPokemonsUsecase
       } else if (params.type == FilterType.name) {
         success.sort((a, b) => a.name.compareTo(b.name));
       }else if (params.type == FilterType.type) {
-        success.sort((a, b) => a.types.first.name.compareTo(a.types.first.name));
+        success.sort((a, b) => a.types.first.name.compareTo(b.types.first.name));
       } else {
         success.sort((a, b) => b.name.compareTo(a.name));
       }

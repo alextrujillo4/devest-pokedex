@@ -21,7 +21,7 @@ class CapturedPokemonItemWidget extends StatelessWidget {
         context.push("/detail/${pokemon.id}");
       },
       child: Card(
-        margin: const EdgeInsets.only(bottom: 16,left: 16, right: 16),
+        margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -32,7 +32,7 @@ class CapturedPokemonItemWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    key:const Key("captured_naming"),
+                    key: const Key("captured_naming"),
                     pokemon.name.capitalize(),
                     maxLines: 1,
                     textAlign: TextAlign.start,
@@ -45,7 +45,14 @@ class CapturedPokemonItemWidget extends StatelessWidget {
                   Text(
                     pokemon.id.formattedPokemonId,
                     style: const TextStyle(
-                      fontSize: 28.0,
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "Type(s): ${pokemon.types.map((e) => e.name).toString()}",
+                    style: const TextStyle(
+                      fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
