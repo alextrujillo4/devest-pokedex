@@ -31,7 +31,7 @@ class _CapturedPokemonsWidgetState extends State<CapturedPokemonsWidget> {
 
   Widget _buildFilters() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 88),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -71,7 +71,7 @@ class _CapturedPokemonsWidgetState extends State<CapturedPokemonsWidget> {
 
   Widget _buildListView(List<IPokemon> pokemons) {
     return Padding(
-      padding: const EdgeInsets.only(top: 148),
+      padding: const EdgeInsets.only(top: 80),
       child: ListView.builder(
         itemCount: pokemons.length,
         itemBuilder: (context, index) {
