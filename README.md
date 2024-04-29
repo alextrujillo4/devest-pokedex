@@ -2,6 +2,8 @@
 
 **Join forces with Devest** to bring the Pokédex to life, enabling trainers to access and manage their Pokémon collection seamlessly across Android, iOS, desktop, and web.
 
+[ -> POKEDEX DEMO :)](pokedex.mov)
+
 **My Mission:**
 
 * **Develop a comprehensive Pokédex app** that fulfills the requirements outlined below.
