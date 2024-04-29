@@ -28,12 +28,18 @@ class EncyclopediaPage extends StatelessWidget {
               ?.copyWith(color: Colors.white),
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        label: const Text("Catched"),
-        icon: const Icon(Icons.catching_pokemon),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white.withAlpha(0),
         onPressed: () {
           context.go("/captured");
         },
+        child:AnimatedRotation(
+          turns: 0.99,
+          duration: const Duration(seconds: 1),
+          child:  Image.asset("assets/images/pokeball.png"),
+        ),
+
+
       ),
       body: BlocBuilder<EncyclopediaBloc, RequestState>(
         builder: (context, state) {
