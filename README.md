@@ -56,19 +56,6 @@
 *   Leverage code quality control libraries.
 *   Explore opportunities to enhance user experience (UX) and graphical user interface (GUI).
 
-### Personal Info
-
-I'm Alex Trujillo, a passionate software developer with a keen interest in mobile app development
-using Flutter. You can find my work on:
-
-* **Website:** [https://alextrujillo4.com/](https://alextrujillo4.com/)
-
-I'm eager to showcase my skills :) Thank you to everyone at Devest :)
-
-**Website:**
-
-Visit the Devest website for more information and to explore their work: Devest Website: [http://devest.com/](http://devest.com/)
-
 **Steps:**
 
 1.  **Clone the Repository:**
@@ -125,4 +112,12 @@ The project follows a modular approach, organizing code into separate packages a
       * **Params:** Parameter classes for passing data to use cases 
       * **Repository:** Interfaces for repositories defining data access methods 
       * **Usecase:** Use cases implementing the business logic of the application 
-* 
+
+### Personal Info
+
+I'm Alex Trujillo, a passionate software developer with a keen interest in mobile app development
+using Flutter. You can find my work on:
+
+* **Website:** [https://alextrujillo4.com/](https://alextrujillo4.com/)
+
+I'm eager to showcase my skills :) Thank you to everyone at Devest :)
